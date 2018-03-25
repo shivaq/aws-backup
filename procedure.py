@@ -66,3 +66,25 @@ type(inst)
 
 問題ない？っぽいので、リストから要素を一つ取り出し、変数に割り当てる
 # i = list(inst)[0]
+# で、どんな key/value があるか探索できる
+
+フィルター作成(リスト内に辞書構造)
+# filters = [{'Name': 'tag:Project', 'Values':["valkyrie"]}]
+
+backup_ami.py の使い方
+-------------------------------------------------
+インスタンス情報を出力
+# pipenv run "backup_ami\backup_ami"
+指定したプロジェクト名のインスタンス情報を出力
+pipenv run "backup_ami\backup_ami --project=Valkyrie"
+-------------------------------------------------
+
+ec2 の タグ 情報を、"Dictionary Comprehension" でリスト形式から辞書形式に変換
+# boto3 で ec2 OBJ を作成し、全インスタンス情報を取得
+# 調査用に最初の要素を引き出す
+# i = list(instances)[0]
+# tags = {}
+# 右側で for ループして t に格納
+# t から "Key のvalue": "Value のvalue" みたく辞書形式にデータを整形し、変数に格納
+tags = { t['Key']: t['Value'] for t in i.tags or []}
+11：34 から
