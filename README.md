@@ -16,4 +16,5 @@ backup_ami uses the confuguration file created by the AWS cli. e.g.
 `pipenv run "python backup_ami\backup_ami.py <command> <--project=PROJECT>"`
 
 *command* is list, start, or stop
+
 *project* is optional

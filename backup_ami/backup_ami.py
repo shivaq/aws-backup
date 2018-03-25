@@ -20,9 +20,27 @@ def filter_instances(project):
 
     return instances
 
-
 # ファンクションをグループ化
 @click.group()
+def cli():
+    """Backup_ami manages snapshots"""
+
+"""
+----------- スナップショット  ----------------
+"""
+# cli グループにネストされたグループ
+@cli.group("volumes")
+def volumes():
+    """Commands for volumes"""
+
+
+
+"""
+----------- インスタンス list, start, stop ----------------
+"""
+
+
+@cli.group("instances")
 def instances():
     """Commands for instances"""
 
@@ -90,4 +108,4 @@ def stop_instances(project):
 # 直接呼び出された場合のみ、続く処理を実行
 if __name__ == '__main__':
     # グループ化したファンクションをコール
-    instances()
+    cli()

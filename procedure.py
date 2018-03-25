@@ -87,4 +87,12 @@ ec2 の タグ 情報を、"Dictionary Comprehension" でリスト形式から�
 # 右側で for ループして t に格納
 # t から "Key のvalue": "Value のvalue" みたく辞書形式にデータを整形し、変数に格納
 tags = { t['Key']: t['Value'] for t in i.tags or []}
-11：34 から
+
+インスタンス情報経由で EBS 情報を取得
+ from backup_ami import backup_ami
+ project = 'Valkyrie'
+instances = backup_ami.filter_instances(project)
+for i in instances:
+    print(i)
+    for v in i.volumes.all():
+        print(v)
